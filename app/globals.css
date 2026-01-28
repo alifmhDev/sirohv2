@@ -1,0 +1,375 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142 76% 36%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* Sidebar variables */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom Islamic colors for light mode */
+    --islamic-green: 142 76% 36%;
+    --islamic-green-light: 142 76% 45%;
+    --islamic-amber: 43 74% 66%;
+    --islamic-blue: 217 91% 60%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 142 70% 45%;
+    --primary-foreground: 144 61% 20%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142 70% 45%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Sidebar variables for dark mode */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom Islamic colors for dark mode */
+    --islamic-green: 142 70% 45%;
+    --islamic-green-light: 142 70% 55%;
+    --islamic-amber: 43 74% 76%;
+    --islamic-blue: 217 91% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  /* Enhanced dark mode transitions */
+  html {
+    @apply transition-colors duration-300;
+  }
+
+  /* Dark mode specific styling */
+  .dark {
+    color-scheme: dark;
+  }
+
+  /* Background gradients for both modes */
+  .bg-gradient-main {
+    @apply bg-gradient-to-br from-green-50 via-white to-amber-50;
+  }
+
+  .dark .bg-gradient-main {
+    @apply from-gray-900 via-gray-800 to-gray-900;
+  }
+
+  /* Card styling for dark mode */
+  .dark .bg-white {
+    @apply bg-gray-800;
+  }
+
+  .dark .bg-gray-50 {
+    @apply bg-gray-800;
+  }
+
+  .dark .bg-gray-100 {
+    @apply bg-gray-700;
+  }
+
+  /* Text colors for dark mode */
+  .dark .text-gray-600 {
+    @apply text-gray-300;
+  }
+
+  .dark .text-gray-700 {
+    @apply text-gray-200;
+  }
+
+  .dark .text-gray-800 {
+    @apply text-gray-100;
+  }
+
+  .dark .text-gray-900 {
+    @apply text-white;
+  }
+
+  /* Border colors for dark mode */
+  .dark .border-gray-200 {
+    @apply border-gray-700;
+  }
+
+  .dark .border-gray-300 {
+    @apply border-gray-600;
+  }
+
+  /* Islamic specific colors */
+  .text-islamic-green {
+    color: hsl(var(--islamic-green));
+  }
+
+  .bg-islamic-green {
+    background-color: hsl(var(--islamic-green));
+  }
+
+  .border-islamic-green {
+    border-color: hsl(var(--islamic-green));
+  }
+
+  /* Header styling */
+  .dark header {
+    @apply bg-gray-900/95 border-gray-700;
+  }
+
+  /* Sidebar styling */
+  .dark .sidebar {
+    @apply bg-gray-900 border-gray-700;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg;
+  }
+
+  .dark .card-hover:hover {
+    @apply shadow-2xl shadow-gray-900/50;
+  }
+
+  /* Button styling for dark mode */
+  .dark .btn-primary {
+    @apply bg-green-600 hover:bg-green-700 text-white;
+  }
+
+  /* Input styling for dark mode */
+  .dark input {
+    @apply bg-gray-800 border-gray-600 text-white placeholder-gray-400;
+  }
+
+  .dark input:focus {
+    @apply border-green-500 ring-green-500;
+  }
+
+  /* Dropdown/Select styling for dark mode */
+  .dark select {
+    @apply bg-gray-800 border-gray-600 text-white;
+  }
+
+  /* Badge styling for dark mode */
+  .dark .badge-green {
+    @apply bg-green-800 text-green-200;
+  }
+
+  .dark .badge-amber {
+    @apply bg-amber-800 text-amber-200;
+  }
+
+  .dark .badge-blue {
+    @apply bg-blue-800 text-blue-200;
+  }
+
+  /* Progress bar styling */
+  .dark .progress-bar {
+    @apply bg-gray-700;
+  }
+
+  .dark .progress-fill {
+    @apply bg-green-500;
+  }
+
+  /* Timeline styling for dark mode */
+  .dark .timeline-line {
+    @apply bg-green-700;
+  }
+
+  .dark .timeline-dot {
+    @apply bg-green-500 border-gray-900;
+  }
+
+  /* Search results styling */
+  .dark .search-results {
+    @apply bg-gray-800 border-gray-600;
+  }
+
+  .dark .search-result-item:hover {
+    @apply bg-gray-700;
+  }
+
+  /* Scrollbar styling for dark mode */
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-gray-800;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+}
+
+/* Islamic Typography */
+.font-arabic {
+  font-family: var(--font-amiri), serif;
+}
+
+/* Custom Islamic styling */
+.islamic-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(34, 197, 94, 0.1) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.dark .islamic-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(34, 197, 94, 0.2) 1px, transparent 0);
+}
+
+/* Smooth transitions for all interactive elements */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Theme transition for smooth mode switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Ensure proper contrast in dark mode */
+.dark .text-contrast {
+  @apply text-white;
+}
+
+.dark .bg-contrast {
+  @apply bg-gray-800;
+}
+
+/* Special styling for Islamic elements */
+.islamic-quote {
+  @apply bg-green-50 dark:bg-green-900/30 border-l-4 border-l-green-500 p-4 rounded-r-lg;
+}
+
+.dark .islamic-quote {
+  @apply text-green-100;
+}
+
+/* Enhanced card styling */
+.islamic-card {
+  @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300;
+}
+
+/* Button variants for Islamic theme */
+.btn-islamic {
+  @apply bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-300;
+}
+
+.dark .btn-islamic {
+  @apply from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600;
+}
